@@ -1,0 +1,27 @@
+  <h1>Formulário de cadastro</h1>
+  <div ng-controller="registrationCtrl as regCtrl">
+    <form name="form" ng-submit="form.$valid && regCtrl.sendForm()" novalidate>
+      <div ng-show="form.$error.required && form.$dirty">
+        Campos obrigatórios não preenchidos
+      </div>
+      <div>
+        <label>Nome</label>
+        <input type="text" name="nome" ng-model="regCtrl.user.nome" required>
+      </div>
+      <br />
+      <div>
+        <label>Email</label>
+        <input type="email" name="email" ng-model="regCtrl.user.email">
+        <div ng-show="form.email.$error.email">
+          Email inválido
+        </div>
+      </div>
+      <br />
+      <div>
+        <label>CPF</label>
+        <input type="text" name="cpf" ng-model="regCtrl.user.cpf" required mask="000.000.000-00" placeholder="___.___.___-__">
+      </div>
+      <br />
+      <input type="submit" value="Confirmar cadastro">
+    </form>
+  </div>
