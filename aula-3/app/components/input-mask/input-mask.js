@@ -1,14 +1,10 @@
-'use strict';
-
-angular.module('enejApp.input-mask', [])
+angular.module('enejApp')
 
 .directive('mask', function() {
-  return {
-    restrict: 'A',
-    link: function(scope, element, attrs) {
-      element.mask(attrs.mask);
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+            element.mask(attrs.mask);
+        }
     }
-
-  }
 });
-;

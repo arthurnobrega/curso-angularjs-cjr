@@ -1,10 +1,7 @@
 'use strict';
 
-angular.module('enejApp', [
-  'ngRoute',
-  'enejApp.input-mask'
-])
+angular.module('enejApp', ['ngRoute'])
 
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.otherwise({redirectTo: '/registration'});
-}]);
+.config(function($routeProvider) {
+    $routeProvider.otherwise({redirectTo: '/registration'});
+});
