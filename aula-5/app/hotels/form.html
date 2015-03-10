@@ -1,0 +1,25 @@
+<form ng-submit="ctrl.sendForm()">
+    <div class="form-group">
+        <label for="nome">Nome:</label>
+        <input type="text" class="form-control" name="nome" id="nome" value="" ng-model="ctrl.hotel.nome"></input>
+    </div>
+    <div class="form-group">
+        <label for="professor">Email:</label>
+        <input type="text" class="form-control" name="professor" id="professor" value="" ng-model="ctrl.hotel.email"></input>
+    </div>
+
+    <div ng-repeat="room in ctrl.hotel.rooms">
+        <div class="form-group">
+            <label for="professor">Total de vagas:</label>
+            <input type="text" class="form-control" name="professor" id="professor" value="" ng-model="room.numVagas" ></input>
+        </div>    
+        <div class="form-group">
+            <label for="professor">Nome do quarto:</label>
+            <input type="text" class="form-control" name="professor" id="professor" value="" ng-model="room.name" ></input>
+        </div>
+    </div>
+    
+    <button class="btn btn-primary" type="submit">Salvar dados</button>
+    <button class="btn btn-primary" ng-click="ctrl.addNewRoom()">Novo campo</button>
+    <button class="btn btn-primary" ng-click="ctrl.deleteLastRoom()">Deletar campo</button>
+</form>
