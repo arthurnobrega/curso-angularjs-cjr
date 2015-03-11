@@ -18,8 +18,7 @@ angular.module('enejApp')
     var self = this;
 
     self.hotel = {
-        id: '',
-        nome: '',
+        name: '',
         email: '',
         rooms: []
     };
@@ -41,20 +40,19 @@ angular.module('enejApp')
     // Envia o formulário
     self.sendForm = function () {
         console.log(self.hotel);
-        self.hotel.id = 1;
         Hotel.save(self.hotel);
     };
 })
 
 .controller('hotelJoinController', function (Hotel) {
     var self = this;
-    self.hotel = Hotel.get();
-    console.log(self.hotel);
+    self.hotel = Hotel.get({idHotel: '-Jk9L4oqNEW_pHP52AdL'});
+    // console.log(self.hotel);
 })
 
 .factory('Hotel', function($resource) {
     return $resource(
-        'https://glowing-torch-368.firebaseio.com/hotels/idHotel.json', 
+        'https://glowing-torch-368.firebaseio.com/hotels/:idHotel.json', 
         {idHotel: '@id'},
         {
             'update': {method: 'PUT'}

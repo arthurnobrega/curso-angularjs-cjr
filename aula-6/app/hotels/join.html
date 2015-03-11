@@ -1,1 +1,22 @@
-{{ctrl.hotel}}
+<div>
+  <p>Hotel: {{ctrl.hotel.name}}</p>
+  <small>email do hotel: {{ctrl.hotel.email}}</small>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Quarto</th>
+      <th>Número de pessoas</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody ng-repeat="(key, room) in ctrl.hotel.rooms">
+    <tr>
+      <td>{{ room.name }}</td>
+      <td>{{ room.numVagas }}</td>
+      <td>  
+        <button class="btn btn-primary">Entrar</button >
+      </td>
+    </tr>
+  </tbody>
+</table>
