@@ -7,7 +7,7 @@ angular.module('enejApp')
         controller: 'hotelFormController',
         controllerAs: 'ctrl'
     })
-    .when('/hotels/join', {
+    .when('/hotels/join/:idHotel', {
         templateUrl: 'hotels/join.html',
         controller: 'hotelJoinController',
         controllerAs: 'ctrl'
@@ -22,11 +22,6 @@ angular.module('enejApp')
         email: '',
         rooms: []
     };
-
-    // Hotel.save({name: 'testando'});
-    // Hotel.get(function(response) {
-    //     console.log(response);
-    // });
 
     self.hotel.rooms = Room.getRooms();
 
@@ -44,10 +39,9 @@ angular.module('enejApp')
     };
 })
 
-.controller('hotelJoinController', function (Hotel) {
+.controller('hotelJoinController', function (Hotel, $routeParams) {
     var self = this;
-    self.hotel = Hotel.get({idHotel: '-Jk9L4oqNEW_pHP52AdL'});
-    // console.log(self.hotel);
+    self.hotel = Hotel.get({idHotel: $routeParams.idHotel});
 })
 
 .factory('Hotel', function($resource) {
@@ -79,7 +73,8 @@ angular.module('enejApp')
         addNewRoom: function() {
             var newRoom = {
                 numVagas: '',
-                name: ''
+                name: '',
+                guests: []  
             };
             rooms.push(newRoom);
         },
@@ -87,6 +82,35 @@ angular.module('enejApp')
             rooms.pop();
         }
     };
+})
+
+.directive('hotelInfo', function () {
+    return {
+        restrict: 'E',
+        templateUrl: "hotels/_hotel_info.html",
+        scope: {
+            'hotel': '='
+        }
+    }
+})
+
+.directive('roomInfo', function (User) {
+    return {
+        restrict: 'E',
+        templateUrl: "hotels/_room_info.html",
+        scope: {
+            'rooms': '='
+        },
+        link: function (scope, element, attributes) {
+            scope.user = User.getCurrentUser();
+            scope.linkUserToRoom = function (room) {
+                var user = User.getCurrentUser();
+                room.numVagas -= 1;
+                room.hasUser = true;
+                scope.user.hasRoom = true;
+            };
+        }
+    }
 })
 
 ;
