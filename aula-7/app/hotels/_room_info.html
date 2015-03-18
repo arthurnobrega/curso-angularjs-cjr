@@ -1,0 +1,19 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Quarto</th>
+      <th>Número de pessoas</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody ng-repeat="(key, room) in rooms">
+    <tr>
+      <td>{{ room.name }}</td>
+      <td>{{ room.numVagas }}</td>
+      <td>
+        <button ng-show="!user.hasRoom" class="btn btn-primary" ng-click="linkUserToRoom(room)">Entrar</button >
+        <button ng-show="user.hasRoom" class="btn btn-warning">Sair</button >
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,15 @@
+<form ng-submit="ctrl.sendForm()">
+    <div class="form-group">
+        <label for="nome">Nome:</label>
+        <input type="text" class="form-control" name="nome" id="nome" value="" ng-model="ctrl.workshop.nome"></input>
+    </div>
+    <div class="form-group">
+        <label for="professor">Professor:</label>
+        <input type="text" class="form-control" name="professor" id="professor" value="" ng-model="ctrl.workshop.professor"></input>
+    </div>
+    <div class="form-group" ng-repeat="field in ctrl.workshop.dynamicFields">
+        <label for="professor">Dinamic field:</label>
+        <input type="text" class="form-control" name="professor" id="professor" value="" ng-model="field"></input>
+    </div>
+    <button class="btn btn-primary" type="submit">Salvar dados</button>
+</form>
