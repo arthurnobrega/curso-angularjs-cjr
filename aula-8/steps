@@ -1,0 +1,10 @@
+Before
+  -Install ruby
+  -$ gem install sass
+  -$ gem install compass
+Comandos
+  -$ npm install --global yo bower grunt-cli
+  -$ npm install -g generator-angular
+  -$ yo angular --coffee
+    -- adicionar angular-resources, ng-messages
+  -$
